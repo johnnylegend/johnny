@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "空气红外监测";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>空气红外数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="18ad01l">
+        <input hidden value="18ad01l" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">PM1.0浓度：</label>
+                <input class="form-control" id="pm1" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">PM2.5浓度：</label>
+                <input class="form-control" id="pm2" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">PM10浓度：</label>
+                <input class="form-control" id="pm10" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">VOC浓度：</label>
+                <input class="form-control" id="voc" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">温度：</label>
+                <input class="form-control" id="ad01lTmp" type="text" style="height:40px;">℃
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">湿度：</label>
+                <input class="form-control" id="ad01lHum" type="text" style="height:40px;">%
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="19ibd01l">
+        <input hidden value="19ibd01l" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电压：</label>
+                <input class="form-control" id="ibd01lBat" type="text" style="height:40px;" value="3.186">V
+            </div>
+        </form>
+        <div class="form-group">
+            <label class="lh46 pull-left">设备状态：</label>
+            <a class="btn btn-default btn-lg btn-llg 19ibd01l" data-value="01">有人</a>
+            <a class="btn btn-default btn-lg btn-llg 19ibd01l" data-value="01">按键</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

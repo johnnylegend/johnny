@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "水浸数据";
+}
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>水浸数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="waterIn" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg waterIn" data-value="06">水浸报警</a>
+            <a class="btn btn-default btn-lg btn-llg waterIn" data-value="01">传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg waterIn" data-value="01">低电</a>
+            <a class="btn btn-default btn-lg btn-llg waterIn" data-value="01">被拆</a>
+            <a class="btn btn-default btn-lg btn-llg waterIn" data-value="01">按键</a>
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "MQTT";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>通信网关数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="mqtt" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">数据类型：</label>
+            <a class="btn btn-default btn-lg btn-llg mqttdata" data-value="1">基础数据</a>
+            <a class="btn btn-default btn-lg btn-llg mqttdata active" data-value="2">延展数据</a>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">状态：</label>
+            <a class="btn btn-default btn-lg btn-llg mqtttype" data-value="1">支持三相</a>
+            <a class="btn btn-default btn-lg btn-llg mqtttype" data-value="1">在线</a>
+            <a class="btn btn-default btn-lg btn-llg mqtttype" data-value="1">合闸</a>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">A相电压：</label>
+                <input class="form-control" id="mqttPA" type="text" style="height:40px;">V
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">B相电压：</label>
+                <input class="form-control" id="mqttPB" type="text" style="height:40px;">V
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">C相电压：</label>
+                <input class="form-control" id="mqttPC" type="text" style="height:40px;">V
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">A相电流：</label>
+                <input class="form-control" id="mqttCA" type="text" style="height:40px;">A
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">B相电流：</label>
+                <input class="form-control" id="mqttCB" type="text" style="height:40px;">A
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">C相电流：</label>
+                <input class="form-control" id="mqttCC" type="text" style="height:40px;">A
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">A相有功功率：</label>
+                <input class="form-control" id="mqttPPA" type="text" style="height:40px;">W
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">B相有功功率：</label>
+                <input class="form-control" id="mqttPPB" type="text" style="height:40px;">W
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">C相有功功率：</label>
+                <input class="form-control" id="mqttPPC" type="text" style="height:40px;">W
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">A相无功功率：</label>
+                <input class="form-control" id="mqttRPA" type="text" style="height:40px;">Var
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">B相无功功率：</label>
+                <input class="form-control" id="mqttRPB" type="text" style="height:40px;">Var
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">C相无功功率：</label>
+                <input class="form-control" id="mqttRPC" type="text" style="height:40px;">Var
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">当前有功电量总和：</label>
+                <input class="form-control" id="mqttPT" type="text" style="height:40px;">Kwh
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">当前无功电量总和：</label>
+                <input class="form-control" id="mqttRPT" type="text" style="height:40px;">Kvarh
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">当前1象限无功总电量：</label>
+                <input class="form-control" id="mqttRPT1" type="text" style="height:40px;">Kwh
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">当前2象限无功总电量：</label>
+                <input class="form-control" id="mqttRPT2" type="text" style="height:40px;">Kwh
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">当前3象限无功总电量：</label>
+                <input class="form-control" id="mqttRPT3" type="text" style="height:40px;">Kwh
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">当前4象限无功总电量：</label>
+                <input class="form-control" id="mqttRPT4" type="text" style="height:40px;">Kwh
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">设备温度：</label>
+                <input class="form-control" id="mqttTemp" type="text" style="height:40px;">℃
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">A相线温度：</label>
+                <input class="form-control" id="mqttTempA" type="text" style="height:40px;">℃
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">B相线温度：</label>
+                <input class="form-control" id="mqttTempB" type="text" style="height:40px;">℃
+            </div>
+            <div class="form-group">
+                <label class="lh46 pull-left">C相线温度：</label>
+                <input class="form-control" id="mqttTempC" type="text" style="height:40px;">℃
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">零线温度：</label>
+                <input class="form-control" id="mqttTempZ" type="text" style="height:40px;">℃
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电能方向：</label>
+                <input class="form-control" id="mqttPD" type="text" style="height:40px;">
+            </div>
+        </form>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

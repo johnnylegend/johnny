@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "主页";
+}
+
+<div class="container">
+    <img alt="google" src="~/images/bolt-icons.jpg" class="center-block" style="margin-top: 100px;">
+</div>
+
+<div class="container" style="margin-top: 20px;">
+    <div class="form-group form-group-inline">
+        <label for="mac" class="lh46 pull-left">Mac地址：</label>
+        <input class="form-control" id="mac" type="text">
+        <a id="seapage" class="btn btn-primary btn-lg btn-llg confirm">搜索</a>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 150px;">
+    <div class="form-group text-center">
+        <h1><b>嵌入式随机发送程序</b></h1>
+    </div>
+    <div class="form-group form-group-inline">
+        <label for="number" class="lh46 pull-left">发送次数：</label>
+        <input class="form-control" id="number" type="text" placeholder="默认100条">
+        <label for="area" class="lh46 pull-left">地区编码：</label>
+        <input class="form-control" id="area" type="text">
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" id="open" class="btn btn-success btn-lg btn-llg">开启发送</button>
+        <button type="reset" id="close" class="btn btn-danger btn-lg btn-llg">停止发送</button>
+    </div>
+</div>

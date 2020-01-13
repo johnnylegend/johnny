@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "无线烟感";
+}
+<style type="text/css">
+    .input_text {
+        width: 400px;
+    }
+</style>
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>烟雾数据</h2>
+            </div>
+            @*<div class="col-sm-6">
+                    <form class="form-inline form-m-t pull-right">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="textval" placeholder="020000">
+                                <div class="input-group-addon pointer" id="search"><i class="glyphicon glyphicon-search"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+        </div>
+    </div>
+
+    <div class="container" id="esa">
+        <div class="form-group">
+            <h3 class="pull-left">厂商供应型号：ESA14-JD(默认)</h3>
+        </div>
+    </div>
+
+    <div class="container" id="esaAss">
+        <input hidden value="smoke" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">版本：</label>
+            <a class="btn btn-default btn-lg btn-llg version" data-version="01">01</a>
+            <a class="btn btn-default btn-lg btn-llg version active" data-version="02">02</a>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg type active" data-type="00">无烟</a>
+            <a class="btn btn-default btn-lg btn-llg type" data-type="04">烟雾</a>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">传感器状态：</label>
+            <a class="btn btn-default btn-lg btn-llg state1 active" data-state="00">正常</a>
+            <a class="btn btn-default btn-lg btn-llg state1" data-state="01">故障</a>
+            <a class="btn btn-default btn-lg btn-llg state2 active" data-state="00">电量正常</a>
+            <a class="btn btn-default btn-lg btn-llg state2" data-state="01">低电</a>
+            <a class="btn btn-default btn-lg btn-llg state3 active" data-state="000">按键正常</a>
+            <a class="btn btn-default btn-lg btn-llg state3" data-state="001">测试</a>
+            <a class="btn btn-default btn-lg btn-llg state3" data-state="010">消音</a>
+        </div>
+    </div>
+
+    <div class="container" id="gs">
+        <div class="form-group">
+            <h3 class="pull-left">厂商供应型号：GS517L</h3>
+        </div>
+    </div>
+
+    <div class="container" id="gsAss">
+        <div class="form-group">
+            <label class="lh46 pull-left">设备状态：</label>
+            <a class="btn btn-default btn-lg btn-llg vertype" data-value="1">报警记忆</a>
+            <a class="btn btn-default btn-lg btn-llg vertype" data-value="1">电量低</a>
+            <a class="btn btn-default btn-lg btn-llg vertype" data-value="1">传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg vertype" data-value="1">报警静音</a>
+            <a class="btn btn-default btn-lg btn-llg vertype" data-value="1">烟雾报警</a>
+        </div>
+        <div class="form-group form-group-inline input_text">
+            <label class="lh46 pull-left">设备电池：</label>
+            <input class="form-control" id="batPer" type="text">
+        </div>
+        <div class="form-group form-group-inline input_text">
+            <label class="lh46 pull-left">烟雾浓度：</label>
+            <input class="form-control input_text" id="smokePer" type="text">
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+        <br>
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+            @*<a id="confirm" class="btn btn-primary btn-lg btn-llg confirm">确定</a>*@
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

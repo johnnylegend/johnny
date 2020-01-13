@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "门磁";
+}
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>门磁数据</h2>
+            </div>
+            @*<div class="col-sm-6">
+                    <form class="form-inline form-m-t pull-right">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="textval" placeholder="020000">
+                                <div class="input-group-addon pointer" id="search"><i class="glyphicon glyphicon-search"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="magnetic" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg magtype" data-value="03">门被打开</a>
+            <a class="btn btn-default btn-lg btn-llg magtype" data-value="01">传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg magtype" data-value="01">低电量</a>
+            <a class="btn btn-default btn-lg btn-llg magtype" data-value="10">门磁被拆开</a>
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

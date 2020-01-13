@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Lora监测传感器";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Lora监测传感器数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="loraP">
+        <input hidden value="loraP" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电压：</label>
+                <input class="form-control" id="batP" type="text" style="height:40px;" value="3.5">V
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">水压：</label>
+                <input class="form-control" id="valueP" type="text" style="height:40px;" value="0.3">MPA
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="loraL">
+        <input hidden value="loraL" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电压：</label>
+                <input class="form-control" id="batL" type="text" style="height:40px;" value="3.5">V
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">液位值：</label>
+                <input class="form-control" id="valueL" type="text" style="height:40px;" value="0.3">M
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

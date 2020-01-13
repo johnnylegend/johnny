@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "温湿度计数据";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>温湿度计数据</h2>
+                <input hidden value="temphum" id="categoryTell" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="epg14">
+        <input hidden value="temphum" id="category" />
+        <div>
+            <h3>型号：TEMP001</h3>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">状态：</label>
+            <a class="btn btn-default btn-lg btn-llg humtype" data-value="1">电压欠压</a>
+            <a class="btn btn-default btn-lg btn-llg humtype" data-value="1">温度异常</a>
+            <a class="btn btn-default btn-lg btn-llg humtype" data-value="1">按键</a>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电压：</label>
+                <input class="form-control" id="batV" type="text" style="height:40px;" value="3.56">V
+            </div>
+        </form>
+        <div class="form-group">
+            <label class="lh46 pull-left">温度：</label>
+            <a class="btn btn-default btn-lg btn-llg humtype" data-value="1">传感器异常</a>
+            <a class="btn btn-default btn-lg btn-llg humtype" data-value="1">负温</a>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempData" value="35.6" />°C
+        </div>
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="lh46 pull-left">湿度：</label>
+                <a class="btn btn-default btn-lg btn-llg humtypedis" data-value="1" id="dis">传感器异常</a>
+                <input class="form-control" id="humData" type="text" style="height:40px;" value="20" />%
+            </div>
+        </form>
+    </div>
+
+    @*<div class="container" id="eth14">
+        <br>
+        <input hidden value="temphum" id="category" />
+        <div>
+            <h3>型号：ETH14-LS</h3>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电量：</label>
+                <input class="form-control" id="batEth14" type="text" style="height:40px;" value="100">%
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">温度：</label>
+                <input class="form-control" id="tempEth14" type="text" style="height:40px;" value="35.0">°C
+            </div>
+        </form>
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="lh46 pull-left">湿度：</label>
+                <input class="form-control" id="humEth14" type="text" style="height:40px;" value="40" />%
+            </div>
+        </form>
+    </div>*@
+
+    <div class="container">
+        <div class="form-group form-group-inline" style="margin-top: 10px;">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

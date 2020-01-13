@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "无线温度";
+}
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>无线温度数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="wireTemp" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">状态：</label>
+            <a class="btn btn-default btn-lg btn-llg wiretype" data-value="1">欠压</a>
+            <a class="btn btn-default btn-lg btn-llg wiretype" data-value="1">温度异常</a>
+            <a class="btn btn-default btn-lg btn-llg wiretype" data-value="1">按键</a>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电压：</label>
+                <input class="form-control" id="batPre" type="text" style="height:40px;" value="3.56">V
+            </div>
+        </form>
+        <div class="form-group">
+            <label class="lh46 pull-left">温度：</label>
+            <a class="btn btn-default btn-lg btn-llg wiretype" data-value="1">传感器异常</a>
+            <a class="btn btn-default btn-lg btn-llg wiretype" data-value="1">负温</a>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="wireTempData" value="35.6" />°C
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

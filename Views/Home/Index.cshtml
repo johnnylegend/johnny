@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "电气火灾";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>电气火灾数据</h2>
+            </div>
+            <div class="col-sm-6">
+                <form class="form-inline form-m-t pull-right">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <!--<input type="text" class="form-control" id="textval" placeholder="40401901020001100000f000f100ee800080008000000000000000a00e50">-->
+                            <!--<div class="input-group-addon pointer" id="search"><i class="glyphicon glyphicon-search"></i></div>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="categoryOri">
+        <input hidden value="electronic" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">漏电传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg verElec" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg verElec" data-value="1">报警</a>
+            <a class="btn btn-default btn-lg btn-llg verElec" data-value="1">故障</a>
+            电量数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="elecData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">A相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typeta" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typeta" data-value="1">报警</a>
+            <a class="btn btn-default btn-lg btn-llg typeta" data-value="1">故障</a>
+            温度数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempAData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">B相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typetb" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typetb" data-value="1">报警</a>
+            <a class="btn btn-default btn-lg btn-llg typetb" data-value="1">故障</a>
+            温度数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempBData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">C相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typetc" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typetc" data-value="1">报警</a>
+            <a class="btn btn-default btn-lg btn-llg typetc" data-value="1">故障</a>
+            温度数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempCData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">A相电压传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typepa" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typepa" data-value="1">缺相</a>
+            <a class="btn btn-default btn-lg btn-llg typepa" data-value="1">错相</a>
+            <a class="btn btn-default btn-lg btn-llg typepa" data-value="1">过压</a>
+            <a class="btn btn-default btn-lg btn-llg typepa" data-value="1">欠压</a>
+            电压数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="volAData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">B相电压传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typepb" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typepb" data-value="1">缺相</a>
+            <a class="btn btn-default btn-lg btn-llg typepb" data-value="1">错相</a>
+            <a class="btn btn-default btn-lg btn-llg typepb" data-value="1">过压</a>
+            <a class="btn btn-default btn-lg btn-llg typepb" data-value="1">欠压</a>
+            电压数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="volBData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">C相电压传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg typepc" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg typepc" data-value="1">缺相</a>
+            <a class="btn btn-default btn-lg btn-llg typepc" data-value="1">错相</a>
+            <a class="btn btn-default btn-lg btn-llg typepc" data-value="1">过压</a>
+            <a class="btn btn-default btn-lg btn-llg typepc" data-value="1">欠压</a>
+            电压数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="volCData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">A相电流传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg statea" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg statea" data-value="1">过流</a>
+            电流数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="curAData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">B相电流传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg stateb" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg stateb" data-value="1">过流</a>
+            电流数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="curBData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">C相电流传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg statec" data-value="1">屏蔽</a>
+            <a class="btn btn-default btn-lg btn-llg statec" data-value="1">过流</a>
+            电流数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="curCData" />
+        </div>
+    </div>
+
+    <div class="container" id="categoryTemp">
+        <input hidden value="wd" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">A相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg statez" data-value="01">负温</a>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempAAData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">B相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg statez" data-value="01">负温</a>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempBBData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">C相温度传感器：</label>
+            <a class="btn btn-default btn-lg btn-llg statez" data-value="01">负温</a>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="tempCCData" />
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">电流传感器：</label>
+            数据：<input type="text" style="border: 1px solid #ccc; border-radius: 4px;" id="curcurData" />
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

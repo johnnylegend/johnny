@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "无线压力计数据";
+}
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>无线压力计数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="wireless" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg wirelesstype" data-value="1">高压报警</a>
+            <a class="btn btn-default btn-lg btn-llg wirelesstype" data-value="1">低压报警</a>
+        </div>
+        <div class="form-row">
+            <div class="form-group form-group-inline">
+                <label class="lh46 pull-left">电池电量：</label>
+                <select class="form-control">
+                    <option value="100">100%</option>
+                    <option value="95">95%</option>
+                    <option value="90">90%</option>
+                    <option value="85">85%</option>
+                    <option value="80">80%</option>
+                    <option value="75">75%</option>
+                    <option value="70">70%</option>
+                    <option value="65">65%</option>
+                    <option value="60">60%</option>
+                    <option value="55">55%</option>
+                    <option value="50">50%</option>
+                    <option value="45">45%</option>
+                    <option value="40">40%</option>
+                    <option value="35">35%</option>
+                    <option value="30">30%</option>
+                    <option value="25">25%</option>
+                    <option value="20">20%</option>
+                    <option value="15">15%</option>
+                    <option value="10">10%</option>
+                    <option value="5">5%</option>
+                    <option value="0">0%</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="preCnt" class="lh46 pull-left">压力纪录数：</label>
+            <input class="form-control" id="preCnt" type="text" value="1">
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="preData" class="lh46 pull-left">数据精度：</label>
+            <input class="form-control" id="preData" type="text" value="3">
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="actData" class="lh46 pull-left">实际数据：</label>
+            <input class="form-control" id="actData" type="text" value="380">
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button> 
+        </div>
+    </div>
+</body>

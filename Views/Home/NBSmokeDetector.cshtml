@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "NB烟雾探测报警";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>NB烟雾探测器数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="nbdetector" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg nbdetec active" data-value="0">无</a>
+            <a class="btn btn-default btn-lg btn-llg nbdetec" data-value="7">正常</a>
+            <a class="btn btn-default btn-lg btn-llg nbdetec" data-value="10">被拆</a>
+            <a class="btn btn-default btn-lg btn-llg nbdetec" data-value="14">按键</a>
+            <a class="btn btn-default btn-lg btn-llg nbdetec" data-value="5">传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg nbdetec" data-value="1">烟雾报警</a>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号接收功率：</label>
+                <input class="form-control" id="nRsrp" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号强度：</label>
+                <input class="form-control" id="nSignal" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信噪比：</label>
+                <input class="form-control" id="nSnr" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号接收质量：</label>
+                <input class="form-control" id="nSignalQ" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">烟雾浓度：</label>
+                <input class="form-control" id="nThickness" type="text" style="height:40px;">%
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电量：</label>
+                <input class="form-control" id="nBattery" type="text" style="height:40px;">%
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">温度值：</label>
+                <input class="form-control" id="nTemp" type="text" style="height:40px;">℃
+            </div>
+        </form>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

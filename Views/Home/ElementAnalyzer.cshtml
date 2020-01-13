@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "水质分析";
+}
+
+<script src="~/js/extra.js"></script>
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>水质分析数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <input hidden id="mol" value="mol"/>
+    <div class="container" id="analyzer">
+        <input hidden value="waterquality" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">数据：</label>
+                <input class="form-control" id="water" type="text" style="height:40px;" value="85.2">mg/L
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="fluent">
+        <input hidden value="waterquality" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">液位值：</label>
+                <input class="form-control" id="liquid" type="text" style="height:40px;" value="100">
+                <button type="button" id="clear" class="btn btn-warning btn-lg btn-llg" style="margin-left:20px">清空</button>
+                <button type="button" id="restore" class="btn btn-primary btn-lg btn-llg">还原</button>
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">瞬时流量：</label>
+                <input class="form-control" id="flash" type="text" style="height:40px;" value="25">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">每小时流量：</label>
+                <input class="form-control" id="perhour" type="text" style="height:40px;" value="60">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">累计流量：</label>
+                <input class="form-control" id="accu" type="text" style="height:40px;" value="120">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">累计次数：</label>
+                <input class="form-control" id="total" type="text" style="height:40px;" value="20">
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

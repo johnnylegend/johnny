@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "可燃气体";
+}
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>可燃气体数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="gas">
+        <input hidden value="gas" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg gastype" data-value="02">可燃气体</a>
+            <a class="btn btn-default btn-lg btn-llg gastype" data-value="01">传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg gastype" data-value="1">消音</a>
+            <a class="btn btn-default btn-lg btn-llg gastype" data-value="1">测试</a>
+        </div>
+    </div>
+
+    <div class="container" id="methane">
+        <input hidden value="methane" id="category" />
+        <div class="form-group">
+            <label class="lh46 pull-left">报警类型：</label>
+            <a class="btn btn-default btn-lg btn-llg metha active" data-value="0">无</a>
+            <a class="btn btn-default btn-lg btn-llg metha" data-value="7">正常</a>
+            <a class="btn btn-default btn-lg btn-llg metha" data-value="1">燃气报警</a>
+            <a class="btn btn-default btn-lg btn-llg metha" data-value="3">气感传感器故障</a>
+            <a class="btn btn-default btn-lg btn-llg metha" data-value="5">烟感传感器故障</a>
+        </div>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号接收功率：</label>
+                <input class="form-control" id="rsrp" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号强度：</label>
+                <input class="form-control" id="signal" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信噪比：</label>
+                <input class="form-control" id="snr" type="text" style="height:40px;">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号接收质量：</label>
+                <input class="form-control" id="signalQ" type="text" style="height:40px;">
+            </div>
+        </form>
+        @*<form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">甲烷浓度：</label>
+                <input class="form-control" id="methaneThickness" type="text" style="height:40px;">%
+            </div>
+        </form>*@
+    </div>
+
+    <div class="container">
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>
