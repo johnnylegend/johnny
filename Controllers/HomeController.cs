@@ -126,6 +126,20 @@ namespace FakeDataSender.Controllers
             return View();
         }
 
+        public IActionResult R312A()
+        {
+            ViewData["Message"] = "R312A";
+
+            return View();
+        }
+
+        public IActionResult JT808()
+        {
+            ViewData["Message"] = "JT808";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

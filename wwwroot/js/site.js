@@ -235,6 +235,24 @@ jQuery(function ($) {
         }
     });
 
+    $('.gtwear').click(function (e) {
+        var hasActive = $(this).hasClass('active');
+        if (hasActive) {
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+    });
+
+    $('.svwear').click(function (e) {
+        var hasActive = $(this).hasClass('active');
+        if (hasActive) {
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+    });
+
     $('.mqttdata').click(function (e) {
         $(this).addClass('active').siblings('.mqttdata').removeClass('active');
     });
@@ -848,7 +866,7 @@ jQuery(function ($) {
                 console.log(states);
             } else if ($('#category').val() == 'fire') {
                 let firePre = $('#firePre').val();
-                let firePreVal = firePre == '' ? '0000' : (parseFloat(firePre)* 10 * 1000).toString(16).padStart(4, '0')
+                let firePreVal = firePre == '' ? '0000' : (parseFloat(firePre) * 10 * 1000).toString(16).padStart(4, '0')
 
                 //原始协议
                 //let firePre = $('#firePre').val();
@@ -882,7 +900,7 @@ jQuery(function ($) {
 
                 states = [firePreVal.substr(2, 2), firePreVal.substr(0, 2), fireTmpVal, fireBatVal, arr[0], '00']
                 console.log(states);
-            } else if ($('#category').val() == 'waterIn') {           
+            } else if ($('#category').val() == 'waterIn') {
                 let arr = []
                 $('.waterIn').each(function () {
                     if ($(this).hasClass('active')) {
@@ -892,7 +910,7 @@ jQuery(function ($) {
                     }
                 })
 
-                console.log(arr[1] + arr[2] + (arr[3] == '01' ? '1' : '0') + (arr[4] == '01' ? '001' : '000'))                
+                console.log(arr[1] + arr[2] + (arr[3] == '01' ? '1' : '0') + (arr[4] == '01' ? '001' : '000'))
                 states = ['FA02', arr[0], parseInt(arr[1] + arr[2] + (arr[3] == '01' ? '1' : '0') + (arr[4] == '01' ? '001' : '000'), 2).toString(16).padStart(2, '0'), '3CD0F5']
                 console.log(states);
             } else if ($('#category').val() == '18ad01l') {
@@ -919,7 +937,7 @@ jQuery(function ($) {
                     ad01lHumArr[3], ad01lHumArr[2], ad01lHumArr[1], ad01lHumArr[0], '5a5a']
                 console.log(states);
             } else if ($('#category').val() == 'mqtt') {
-                let date = new Date();  
+                let date = new Date();
                 let time = date.getFullYear().toString() + "-" + pad2(date.getMonth() + 1) + "-" + pad2(date.getDate()) + " " + pad2(date.getHours()) + ":" +
                     pad2(date.getMinutes()) + ":" + pad2(date.getSeconds());
 
@@ -933,7 +951,7 @@ jQuery(function ($) {
                 })
 
                 let comBined = {};
-                if ($('.mqttdata.active').data('value') == '2') {                    
+                if ($('.mqttdata.active').data('value') == '2') {
                     if (arr[0] == '1') comBined["isSupportTriPhase"] = true
                     else comBined["isSupportTriPhase"] = false
                     if (arr[1] == '1') comBined["isLineStatusOnline"] = true
@@ -984,14 +1002,14 @@ jQuery(function ($) {
                             "isSupportTriPhase": false, "isWarningExist": false, "lineId": 1
                         }, {
                             "isLineStatusLeakCheck": false, "isLineStatusOnline": true, "isLineStatusTurnOn": true, "isMainRoad": false, "isSupportLeakCheck": false,
-                                "isSupportTriPhase": false, "isWarningExist": false, "lineId": 2
-                            }],
+                            "isSupportTriPhase": false, "isWarningExist": false, "lineId": 2
+                        }],
                         "messageType": "baseHeartData",
                         "moduleId": $('#mac').val().split("_")[0],
                         "moduleName": "武汉L405"
                     };
-                }               
-                
+                }
+
                 $.ajax({
                     url: 'http://192.168.2.59:8080/info/forward_data_int',
                     data: JSON.stringify(resData),
@@ -1010,6 +1028,126 @@ jQuery(function ($) {
                 })
 
                 console.log(resData)
+                return
+            } else if ($('#category').val() == 'gt') {
+                let date = new Date();
+                let time = date.getFullYear().toString().substr(2, 2) + "" + pad2(date.getMonth() + 1) + "" + pad2(date.getDate()) + "" + pad2(date.getHours()) + "" +
+                    pad2(date.getMinutes()) + "" + pad2(date.getSeconds());
+
+                let arr = [];
+                $('.gtwear').each(function () {
+                    if ($(this).hasClass('active')) {
+                        arr.push($(this).data('value'));
+                    } else {
+                        arr.push('0');
+                    }
+                });
+
+                let result = {
+                    "msgBodyer": {
+                        "deviceMac": $('#mac').val(),
+                        "eventTime": time,
+                        "faceAddress": "https://img.zhxf.yingjyun.com/yxun/ai/202003250035/20200422/20200422-155841.png",
+                        "faceValidate": 0,
+                        "isMask": parseInt(arr[0]),
+                        "jobNumber": $('#gtP').val(),
+                        "temperature": parseFloat($('#gtT').val()),
+                        "userName": $('#gtU').val()
+                    }
+                }
+
+                console.log(result)
+                $.ajax({
+                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-yixun',
+                    data: JSON.stringify(result),
+                    contentType: "application/json",
+                    type: 'POST',
+                    timeout: 1000,
+                    success: function (res) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                        console.log(res);
+                    },
+                    error: function (err) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                    }
+                })
+
+                return
+            } else if ($('#category').val() == 'sv') {            
+                let arr = [];
+                $('.svwear').each(function () {
+                    if ($(this).hasClass('active')) {
+                        arr.push($(this).data('value'));
+                    } else {
+                        arr.push('0');
+                    }
+                });
+
+                let result = {
+                    "cardNo": "",
+                    "checkPic": "https://img.zhxf.yingjyun.com/mips/8CFCA003A9EE/20200429/8CFCA003A9EE_20200429172439.jpg",
+                    "checkTime": Date.now(),
+                    "extra": "",
+                    "idCardNo": $('#svP').val(),
+                    "mac": $('#mac').val(),
+                    "mask": parseInt(arr[0]),
+                    "name": $('#svU').val(),
+                    "temperature": parseFloat($('#svT').val()),
+                    "type": -1,
+                    "userId": "-1"
+                }
+
+                console.log(result)
+                $.ajax({
+                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-mips',
+                    data: JSON.stringify(result),
+                    contentType: "application/json",
+                    type: 'POST',
+                    timeout: 1000,
+                    success: function (res) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                        console.log(res);
+                    },
+                    error: function (err) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                    }
+                })
+
+                return
+            } else if ($('#category').val() == 'dh') {
+                let time = Date.now() / 1000
+
+                let result = {
+                    "eventCardName": $('#dhU').val(),
+                    "eventCurrentTemperature": $('#dhT').val(),
+                    "eventDeviceMac": $('#mac').val(),
+                    "eventDoorTime": parseInt(time).toString(),
+                    "eventOssFilePath": "https://img.zhxf.yingjyun.com/dahua/6C07613GAZ13D21/20200429/6C07613GAZ13D21_20200429190307.jpg",
+                    "eventUserId": $('#dhP').val()
+                }
+
+                console.log(result)
+                $.ajax({
+                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-dahua',
+                    data: JSON.stringify(result),
+                    contentType: "application/json",
+                    type: 'POST',
+                    timeout: 1000,
+                    success: function (res) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                        console.log(res);
+                    },
+                    error: function (err) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                    }
+                })
+
                 return
             }
 
@@ -1115,9 +1253,9 @@ jQuery(function ($) {
     //主页的提交按钮的操作
     $('#seapage').click(function () {
         var mac = $('#mac').val();
-        $.get('http://192.168.2.59:8080/info/device_data?mac=' + mac, function (data) {
+        $.get('http://localhost:8080/info/device_data?mac=' + mac, function (data) {
             if (data == '') {
-                $.get('http://192.168.2.59:8080/info/device_data?deviceId=' + mac, function (data1) {
+                $.get('http://localhost:8080/info/device_data?deviceId=' + mac, function (data1) {
                     if (data1 == '') {
                         $('#mainModal').modal('show');
                         return;
@@ -1154,6 +1292,8 @@ jQuery(function ($) {
                         window.location.href = "/Home/WaterInvade?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                     } else if (categoryId == 14) {
                         window.location.href = "/Home/MQTT?value=" + mac + "&categoryId=" + categoryId;
+                    } else if (categoryId == 16) {
+                        window.location.href = "/Home/JT808?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                     }
                 });
             } else {
@@ -1186,6 +1326,8 @@ jQuery(function ($) {
                     window.location.href = "/Home/WaterInvade?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                 } else if (categoryId == 14) {
                     window.location.href = "/Home/MQTT?value=" + mac + "&categoryId=" + categoryId;
+                } else if (categoryId == 16) {
+                    window.location.href = "/Home/JT808?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                 }
             }         
         })
@@ -1324,14 +1466,20 @@ function assignValueToText() {
         } else {
             $('#category').val("18ad01l");
             $('#19ibd01l').hide();
-        }        
-    } else if (urlParams.get('categoryId') == '39') {
-        if (urlParams.get('providerModelNumber') == 'MQLLJ') {
-            $('#analyzer').hide();
-            $('#mol').val("mq");
+        }
+    } else if (urlParams.get('categoryId') == '16') {
+        if (urlParams.get('providerModelNumber') == '31') {
+            $('#sv').hide();
+            $('#gt').hide();
+            $('#category').val("dh");
+        } else if (urlParams.get('providerModelNumber') == '33') {
+            $('#sv').hide();
+            $('#dh').hide();
+            $('#category').val("gt");
         } else {
-            $('#fluent').hide();
-            $('#mol').val("mg");
+            $('#dh').hide();
+            $('#gt').hide();
+            $('#category').val("sv");
         }
     }
 
