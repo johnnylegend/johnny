@@ -1058,7 +1058,7 @@ jQuery(function ($) {
 
                 console.log(result)
                 $.ajax({
-                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-yixun',
+                    url: 'http://192.168.2.59:8080/info/forward_data_jt/flume-yixun',
                     data: JSON.stringify(result),
                     contentType: "application/json",
                     type: 'POST',
@@ -1101,7 +1101,7 @@ jQuery(function ($) {
 
                 console.log(result)
                 $.ajax({
-                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-mips',
+                    url: 'http://192.168.2.59:8080/info/forward_data_jt/flume-mips',
                     data: JSON.stringify(result),
                     contentType: "application/json",
                     type: 'POST',
@@ -1132,7 +1132,7 @@ jQuery(function ($) {
 
                 console.log(result)
                 $.ajax({
-                    url: 'http://192.168.2.15:8080/info/forward_data_jt/flume-dahua',
+                    url: 'http://192.168.2.59:8080/info/forward_data_jt/flume-dahua',
                     data: JSON.stringify(result),
                     contentType: "application/json",
                     type: 'POST',
@@ -1253,9 +1253,9 @@ jQuery(function ($) {
     //主页的提交按钮的操作
     $('#seapage').click(function () {
         var mac = $('#mac').val();
-        $.get('http://localhost:8080/info/device_data?mac=' + mac, function (data) {
+        $.get('http://192.168.2.59:8080/info/device_data?mac=' + mac, function (data) {
             if (data == '') {
-                $.get('http://localhost:8080/info/device_data?deviceId=' + mac, function (data1) {
+                $.get('http://192.168.2.59:8080/info/device_data?deviceId=' + mac, function (data1) {
                     if (data1 == '') {
                         $('#mainModal').modal('show');
                         return;
