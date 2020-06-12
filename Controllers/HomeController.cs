@@ -145,6 +145,11 @@ namespace FakeDataSender.Controllers
             return View();
         }
 
+        public IActionResult FAR1500()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

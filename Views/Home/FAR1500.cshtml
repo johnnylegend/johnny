@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "水质分析";
+}
+
+<script src="~/js/extra.js"></script>
+
+<body onload="assignValueToText()">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>生物特征数据</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <input hidden value="far1500" id="category" />
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信噪比：</label>
+                <input class="form-control" id="farSnr" type="text" style="height:40px;" value="66" />
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">烟雾浓度：</label>
+                <input class="form-control" id="farSmoke" type="text" style="height:40px;" value="1" />
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">电池电量：</label>
+                <input class="form-control" id="farBat" type="text" style="height:40px;" value="100">
+            </div>
+        </form>
+        <form class="form-inline" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label class="lh46 pull-left">信号强度：</label>
+                <input class="form-control" id="farPower" type="text" style="height:40px;" value="19">
+            </div>
+        </form>
+        <div class="form-group">
+            <label class="lh46 pull-left">设备状态：</label>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="1">报警</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="2">静音</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="3">蜂鸣器故障</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="4">低压</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="5">故障</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="6">数据异常</a>
+            <a class="btn btn-default btn-lg btn-llg farSta active" data-value="7">正常</a>
+            <a class="btn btn-default btn-lg btn-llg farSta" data-value="14">模拟报警</a>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">故障告警：</label>
+            <a class="btn btn-default btn-lg btn-llg farWar" data-value="1">烟感故障</a>
+            <a class="btn btn-default btn-lg btn-llg farWar" data-value="2">蜂鸣器故障</a>
+            <a class="btn btn-default btn-lg btn-llg farWar active" data-value="3">故障解除</a>
+        </div>
+        <div class="form-group">
+            <label class="lh46 pull-left">烟雾监测状态：</label>
+            <a class="btn btn-default btn-lg btn-llg farSmo" data-value="1">烟雾报警</a>
+            <a class="btn btn-default btn-lg btn-llg farSmo" data-value="2">烟雾报警解除</a>
+            <a class="btn btn-default btn-lg btn-llg farSmo active" data-value="3">正常</a>
+        </div>
+        <div class="form-group form-group-inline">
+            <label for="mac" class="lh46 pull-left">Mac地址：</label>
+            <input class="form-control" id="mac" type="text">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-llg">提交</button>
+            <button type="reset" class="btn btn-default btn-lg btn-llg" id="cancel">取消</button>
+        </div>
+    </div>
+</body>

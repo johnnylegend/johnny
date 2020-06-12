@@ -261,6 +261,18 @@ jQuery(function ($) {
         $(this).addClass('active').siblings('.nbdetec').removeClass('active');
     });
 
+    $('.farSta').click(function (e) {
+        $(this).addClass('active').siblings('.farSta').removeClass('active');
+    });
+
+    $('.farWar').click(function (e) {
+        $(this).addClass('active').siblings('.farWar').removeClass('active');
+    });
+
+    $('.farSmo').click(function (e) {
+        $(this).addClass('active').siblings('.farSmo').removeClass('active');
+    });
+
     //提交操作
     $('#submit').click(function () {
         var flag = true;
@@ -1075,6 +1087,77 @@ jQuery(function ($) {
                 })
 
                 return
+            } else if ($('#category').val() == 'far1500') {
+                let date = Date.now();
+
+                let arr = [];
+                $('.farSta').each(function () {
+                    if ($(this).hasClass('active')) {
+                        arr.push($(this).data('value'));
+                    }
+                });
+
+                $('.farWar').each(function () {
+                    if ($(this).hasClass('active')) {
+                        arr.push($(this).data('value'));
+                    }
+                });
+
+                $('.farSmo').each(function () {
+                    if ($(this).hasClass('active')) {
+                        arr.push($(this).data('value'));
+                    }
+                });
+
+                let result = {
+                    "upPacketSN": -1,
+                    "upDataSN": -1,
+                    "topic": "v1/up/ad19",
+                    "timestamp": date,
+                    "tenantId": "10455868",
+                    "serviceId": 1,
+                    "protocol": "lwm2m",
+                    "productId": "10068285",
+                    "payload": {
+                        "tx_Power": 90,
+                        "snr": parseInt($('#farSnr').val()),
+                        "smoke_value": parseInt($('#farSmoke').val()),
+                        "smoke_state": parseInt(arr[2]),
+                        "signalPower": $('#farPower').val().indexOf("-") == -1 ? parseInt($('#farPower').val()) : -1 * parseInt($('#farPower').val()),
+                        "pci": 182,
+                        "error": parseInt(arr[1]),
+                        "ecl": 1,
+                        "device_state": parseInt(arr[0]),
+                        "cell_ID": 149946450,
+                        "battery_value": parseInt($('#farBat').val())
+                    },
+                    "messageType": "dataReport",
+                    "deviceType": "",
+                    "deviceId": "46e3f2a23cb94eb0b7a6570699816893",
+                    "assocAssetId": "",
+                    "IMSI": "undefined",
+                    "IMEI": $('#mac').val()
+                }
+
+                console.log(result)
+                $.ajax({
+                    url: 'http://192.168.2.59:8080/info/forward_data_down/57000/agent',
+                    data: JSON.stringify(result),
+                    contentType: "application/json",
+                    type: 'POST',
+                    timeout: 1000,
+                    success: function (res) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                        console.log(res);
+                    },
+                    error: function (err) {
+                        $('#myModal').modal('show');
+                        setInterval("$('#myModal').modal('hide')", 1500);
+                    }
+                })
+
+                return
             } else if ($('#category').val() == 'sv') {            
                 let arr = [];
                 $('.svwear').each(function () {
@@ -1271,6 +1354,7 @@ jQuery(function ($) {
                         window.location.href = "/Home/Index?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                     } else if (categoryId == 2) {
                         if (modelNumber == 17) window.location.href = "/Home/NBSmokeDetector?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
+                        else if (modelNumber == 43) window.location.href = "/Home/FAR1500?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                         else window.location.href = "/Home/SmokeSense?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                     } else if (categoryId == 3) {
                         window.location.href = "/Home/Gas?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
@@ -1305,6 +1389,7 @@ jQuery(function ($) {
                     window.location.href = "/Home/Index?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                 } else if (categoryId == 2) {
                     if (modelNumber == 17) window.location.href = "/Home/NBSmokeDetector?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
+                    else if (modelNumber == 43) window.location.href = "/Home/FAR1500?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                     else window.location.href = "/Home/SmokeSense?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
                 } else if (categoryId == 3) {
                     window.location.href = "/Home/Gas?value=" + mac + "&categoryId=" + categoryId + "&providerModelNumber=" + modelNumber;
